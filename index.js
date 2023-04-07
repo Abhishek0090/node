@@ -12,20 +12,28 @@ const connection = mysql.createConnection({
   database: 'nodemailer'
 });
 
+connection.connect((err)=>{
+  if(err){
+    throw err;
+  }else{
+    console.log("Database Connected Successfully")
+  }
+})
+
 // Nodemailer configuration
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: 'palabhishek411@gmail.com',
-    pass: 'abhi@9999'
+    pass: 'abhi@972023'
   }
 });
 
 // Express.js route to send email
-app.post('/send-email', (req, res) => {
+app.get('/send-email', (req, res) => {
   const mailOptions = {
     from: 'palabhishek411@gmail.com',
-    to: req.body.email,
+    to: "palabhishek1029@gmail.com",
     subject: 'Test Email',
     text: 'This is a test email sent from Node.js using Nodemailer.'
   };
